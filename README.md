@@ -12,3 +12,5 @@ Game of Blackjack/21 made in the 100 Days of Code Python course on Udemy.
 - aces being equal to 11 or 1 depending on if the dealer or player would bust for it to be 11
 - clean/easy to read outputs on the console
 ```
+
+I've included a copy of a second run of code that I made following all of the hints the instructor gave (my original code, I didn't use any) as well as adding a few features to it like the counter from my original code.
