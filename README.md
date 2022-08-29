@@ -13,4 +13,4 @@ Game of Blackjack/21 made in the 100 Days of Code Python course on Udemy.
 - clean/easy to read outputs on the console
 ```
 
-I've included a copy of a second run of code that I made following all of the hints the instructor gave (my original code, I didn't use any) as well as adding a few features to it like the counter from my original code.
+I've included a copy of a second run of code that I made following all of the hints the instructor gave (my original code, I didn't use any)
