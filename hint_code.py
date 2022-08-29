@@ -1,5 +1,5 @@
 import random
-from art import logo
+from art import logo2
 from replit import clear
 
 def deal_card():
@@ -15,45 +15,31 @@ def calculate_score(card_list):
     if sum(card_list) > 21 and 11 in card_list:
         eleven_place = card_list.index(11)
         card_list[eleven_place] = 1
-        return sum(card_list) - 10
     return sum(card_list)
 
 def compare(comp_score, user_score):
+    """Compares the user score and dealer score to determine who won the round."""
     if comp_score == user_score:
-        print("\nIt's a draw!")
-        print(f"Your score is {user_score}.")
-        print(f"Dealer's score is {comp_score}.\n")
+        return "\nIt's a draw!"
     elif user_score == 0:
-        print("\nBlackjack! You win!")
-        print(f"Your score is {user_score}.")
-        print(f"Dealer's score is {comp_score}.")
+        return "\nBlackjack! You win!"
     elif comp_score == 0:
-        print("\nBlackjack! You lose!")
-        print(f"Your score is {user_score}.")
-        print(f"Dealer's score is {comp_score}.")
+        return "\nBlackjack! You lose!"
     elif user_score > 21:
-        print("\nYou lose!")
-        print(f"Your score is {user_score}.")
-        print(f"Dealer's score is {comp_score}.")
+        return "\nYou lose!"
     elif comp_score > 21:
-        print("\nYou win!")
-        print(f"Your score is {user_score}.")
-        print(f"Dealer's score is {comp_score}.\n")
+        return "\nYou win!"
     elif comp_score > user_score:
-        print("\nYou lose!")
-        print(f"Your score is {user_score}.")
-        print(f"Dealer's score is {comp_score}.\n")
+        return "\nYou lose!"
     elif user_score > comp_score:
-        print("\nYou win!")
-        print(f"Your score is {user_score}.")
-        print(f"Dealer's score is {comp_score}.\n")
+        return "\nYou win!"
         
-print(logo)
+print(logo2)
 play = input("Would you like to play? Yes/No ").lower()
 
-while play:
+while play == "yes":
     clear()
-    print(logo)
+    print(logo2)
     user_cards = []
     computer_cards = []
     for num in range(2):
@@ -66,7 +52,7 @@ while play:
     print(f"Dealer's first card: {computer_cards[0]}\n")
 
     if user_score == 0 or comp_score == 0:
-        compare()
+        print(compare(comp_score, user_score))
     else:
         keep_going = input("Do you want to draw another card? Yes/No ").lower()
         if keep_going == "yes":
@@ -82,17 +68,17 @@ while play:
                     if keep_going == "no":
                         keep_going = False
 
-        else:
+        while comp_score < 17:
+            computer_cards.append(deal_card())
+            comp_score = calculate_score(computer_cards)
 
-            while comp_score < 17:
-                computer_cards.append(deal_card())
-                comp_score = calculate_score(computer_cards)
-
-    compare(comp_score, user_score)
+    print(compare(comp_score, user_score))
+    print(f"Your score is {user_score}.")
+    print(f"Dealer's score is {comp_score}.\n")
     
     play = input("Would you like to play again? Yes/No ").lower()
-
-print("Thanks for playing!")
+    if play == "no":
+        print("Thanks for playing!")
 
 #Hint 1: Go to this website and try out the Blackjack game: 
 #   https://games.washingtonpost.com/games/blackjack/
